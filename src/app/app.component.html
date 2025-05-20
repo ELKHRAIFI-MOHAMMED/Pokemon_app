@@ -1,0 +1,22 @@
+<header class="app-header glass-effect">
+  <div class="nav-container">
+    <h1 class="logo">🎮 Pokémon Hub</h1>
+    <nav class="navigation">
+      <ul class="nav-list">
+        <li>
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">🏠 Home</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/list" routerLinkActive="active">📋 List</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/add" routerLinkActive="active">➕ Add</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>

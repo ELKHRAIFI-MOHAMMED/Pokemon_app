@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+body, html {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(120deg, #0b0c10, #1f2833, #0b0c10);
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease infinite;
+  color: #ffffff;
+}
+
+/* Animation de fond */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

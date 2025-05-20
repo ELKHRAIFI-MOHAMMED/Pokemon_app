@@ -1,0 +1,68 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0b0c10;
+  color: #f8f8f8;
+}
+
+/* Header with glass effect */
+.app-header {
+  background: rgba(26, 32, 44, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: #66fcf1;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px #45a29e;
+}
+
+/* Navigation */
+.navigation .nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #c5c6c7;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #45a29e;
+  color: #0b0c10;
+  box-shadow: 0 0 10px #66fcf1;
+}
+
+/* Main */
+.app-content {
+  padding: 2rem 1rem;
+}

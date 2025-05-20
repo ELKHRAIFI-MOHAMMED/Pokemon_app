@@ -1,0 +1,33 @@
+<main class="home">
+  <br><br><br><br>
+  <section class="hero">
+    <img src="assets/pokeball.svg" alt="Pokeball" class="pokeball-icon" />
+    <h1>Welcome to the Pokémon World!</h1>
+    <p class="subtitle">Explore, list and manage your favorite Pokémons in one place.</p>
+    <a routerLink="/list" class="cta-button">🔍 Browse Pokémons</a>
+    <a routerLink="/add" class="cta-button secondary">➕ Add New Pokémon</a>
+  </section>
+
+  <section class="stats">
+    <div class="stat-box">
+      <h3>{{ pokemons().length }}</h3>
+      <p>Pokémons available</p>
+    </div>
+    <div class="stat-box">
+      <h3>4</h3>
+      <p>Types of Monsters</p>
+    </div>
+
+  </section><br>
+  <br>
+  <section class="pokemons-grid">
+    <h2>✨ Featured Pokémons</h2>
+    <div class="pokemons">
+      <div *ngFor="let p of pokemons()">
+        <app-playing-cards [my-pokemon]="p"></app-playing-cards>
+      </div>
+    </div>
+  </section>
+</main>
+
+<router-outlet></router-outlet>

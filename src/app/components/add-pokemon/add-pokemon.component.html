@@ -1,0 +1,74 @@
+{{ pokemonForm.value.name }}
+<form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()" class="pokemon-form">
+  <label>
+    Nom:
+    <input formControlName="name" />
+    <span *ngIf="f['name'].invalid && f['name'].touched">
+      Nom requis (min 3 caractères)
+    </span>
+  </label>
+
+  <label>
+    Points de vie (HP):
+    <input type="number" formControlName="hp" />
+    <span *ngIf="f['hp'].invalid && f['hp'].touched">
+      Valeur entre 1 et 300
+    </span>
+  </label>
+
+  <label>
+    Légende:
+    <input formControlName="figureCaption" />
+    <span *ngIf="f['figureCaption'].invalid && f['figureCaption'].touched">
+      Légende obligatoire (min 3 caractères)
+    </span>
+  </label>
+
+  <label>
+    Nom de l'attaque:
+    <input formControlName="attackName" />
+    <span *ngIf="f['attackName'].invalid && f['attackName'].touched">
+      Nom de l'attaque requis
+    </span>
+  </label>
+
+  <label>
+    Force de l'attaque:
+    <input type="number" formControlName="attackStrength" />
+    <span *ngIf="f['attackStrength'].invalid && f['attackStrength'].touched">
+      Entre 1 et 300
+    </span>
+  </label>
+
+  <label>
+    Description de l'attaque:
+    <textarea formControlName="attackDescription"></textarea>
+    <span *ngIf="f['attackDescription'].invalid && f['attackDescription'].touched">
+      Description requise (min 10 caractères)
+    </span>
+  </label>
+
+  <label>
+    Type:
+    <select formControlName="type">
+      <option value="">-- Choisir un type --</option>
+      <option *ngFor="let type of monsterTypes" [value]="type">{{ type }}</option>
+    </select>
+    <span *ngIf="f['type'].invalid && f['type'].touched">
+      Type requis
+    </span>
+  </label>
+
+  <label>
+    Image:
+    <input type="file" (change)="onFileChange($event)" />
+    <span *ngIf="!previewImage">Image requise</span>
+  </label>
+
+  <div *ngIf="previewImage">
+    <h4>Aperçu:</h4>
+    <img [src]="previewImage" width="120" />
+  </div>
+
+  <button type="submit" >Ajouter Pokémon</button>
+</form>

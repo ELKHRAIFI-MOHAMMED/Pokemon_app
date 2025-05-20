@@ -1,0 +1,11 @@
+<div id="search-bar">
+  <app-serch-bar  (serchBar)="serchFilter($event)" ></app-serch-bar>
+</div>
+
+
+<div id="card-list">
+  <div *ngFor="let p of listPokemons()">
+    <app-playing-cards [my-pokemon]="p"></app-playing-cards>
+  </div>
+</div>
+
