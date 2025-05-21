@@ -10,6 +10,7 @@ import { MonsterTypeProperties } from '../../utils/monster.utils';
   styleUrl: './playing-cards.component.css'
 })
 export class PlayingCardsComponent {
+  @Input() isLarge: boolean = false;
   pokemon:InputSignal<Pokemon>=input(new Pokemon(), {
 		alias: "my-pokemon",
 	})

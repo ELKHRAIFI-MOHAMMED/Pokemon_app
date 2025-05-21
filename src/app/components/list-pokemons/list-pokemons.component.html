@@ -1,11 +1,17 @@
 <div id="search-bar">
-  <app-serch-bar  (serchBar)="serchFilter($event)" ></app-serch-bar>
+  <app-serch-bar (serchBar)="serchFilter($event)"></app-serch-bar>
 </div>
 
-
 <div id="card-list">
-  <div *ngFor="let p of listPokemons()">
+  <div *ngFor="let p of listPokemons()" (dblclick)="openCardPopup(p)">
     <app-playing-cards [my-pokemon]="p"></app-playing-cards>
   </div>
 </div>
 
+<!-- Popup overlay -->
+<div *ngIf="selectedPokemon" class="popup-overlay" (click)="closeCardPopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <app-playing-cards [my-pokemon]="selectedPokemon" [isLarge]="true"></app-playing-cards>
+    <button class="close-btn" (click)="closeCardPopup()">×</button>
+  </div>
+</div>

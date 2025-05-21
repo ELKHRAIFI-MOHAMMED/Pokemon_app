@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './list-pokemons.component.css'
 })
 export class ListPokemonsComponent {
+  selectedPokemon: any = null;
    pokemon1:Pokemon =new Pokemon('Pikachu',
       35,
       'N°025 Pikachu',
@@ -26,6 +27,14 @@ export class ListPokemonsComponent {
   pokemons = signal<Pokemon[]>([]);
   listPokemons = signal<Pokemon[]>([...this.pokemons()]);
   constructor(private http: HttpClient) {}
+
+  openCardPopup(pokemon: any) {
+  this.selectedPokemon = pokemon;
+}
+
+closeCardPopup() {
+  this.selectedPokemon = null;
+}
 
   public getData() {
   this.http.get<Pokemon[]>('http://localhost:3004/pokemons')
