@@ -1,4 +1,3 @@
-{{ pokemonForm.value.name }}
 <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()" class="pokemon-form">
   <label>
     Nom:
@@ -73,3 +72,13 @@
   <button *ngIf="!editButton" type="submit" >Ajouter Pokemon</button>
   <button *ngIf="editButton" type="button" (click)="upDatePokemon()" >Update Pokemon Pokémon</button>
 </form>
+
+
+<!-- Fullscreen Loading Popup -->
+<div *ngIf="loading" class="loading-overlay">
+  <div class="loading-spinner-box">
+    <div class="loading-spinner"></div>
+    <p>Loading Pokémons...</p>
+  </div>
+</div>
+

@@ -20,7 +20,7 @@ pokemons = signal<Pokemon[]>([
       'Thunderbolt',
       55,
       'A strong electric shock attack',
-      'images/elct3.jpeg',
+      'images/pokemon1.jpeg',
       MonsterType.ELECTRIC
     ),
     new Pokemon(

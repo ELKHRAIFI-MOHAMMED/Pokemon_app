@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,signal} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pokemon } from '../../models/Pokemon.models';
 import { MonsterType } from '../../utils/monster.utils';
@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-pokemon.component.css'],
 })
 export class AddPokemonComponent implements OnInit {
+  loading:boolean=false;
   pokemonForm: FormGroup;
   previewImage: string | ArrayBuffer | null = null;
   monsterTypes = Object.values(MonsterType);
@@ -44,6 +45,7 @@ export class AddPokemonComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.loading=true;
     const pokemon = history.state.pokemon;
     if (pokemon) {
       this.editPokemon = pokemon;
@@ -62,9 +64,11 @@ export class AddPokemonComponent implements OnInit {
     } else {
       this.editButton=false;
     }
+    this.loading=false
   }
 
   upDatePokemon(){
+    this.loading=true;
     if (this.pokemonForm.valid) {
       const formValue = this.pokemonForm.value;
       const newPokemon = new Pokemon(
@@ -81,7 +85,7 @@ export class AddPokemonComponent implements OnInit {
 
       // Envoie POST du nouveau Pokémon vers l'API
       this.http
-        .put<Pokemon>('http://localhost:3004/pokemons/'+this.editPokemon.id, newPokemon)
+        .put<Pokemon>('https://back.smdvv.ma/public/api/pokemons/'+this.editPokemon.id, newPokemon)
         .subscribe({
           next: (createdPokemon) => {
             this.toastr.success('Pokémon update avec succès !', 'Succès');
@@ -90,6 +94,7 @@ export class AddPokemonComponent implements OnInit {
             this.pokemonForm.reset();
             this.previewImage = null;
             this.router.navigate(['/list']);
+            this.loading=false
           },
           error: (error) => {
             //this.toastr.success('Pokémon créé avec succès !', 'Succès');
@@ -115,6 +120,7 @@ export class AddPokemonComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading=true;
     if (this.pokemonForm.valid) {
       const formValue = this.pokemonForm.value;
       const newPokemon = new Pokemon(
@@ -131,7 +137,7 @@ export class AddPokemonComponent implements OnInit {
 
       // Envoie POST du nouveau Pokémon vers l'API
       this.http
-        .post<Pokemon>('http://localhost:3004/pokemons', newPokemon)
+        .post<Pokemon>('https://back.smdvv.ma/public/api/pokemons', newPokemon)
         .subscribe({
           next: (createdPokemon) => {
             this.toastr.success('Pokémon créé avec succès !', 'Succès');
@@ -139,6 +145,7 @@ export class AddPokemonComponent implements OnInit {
             // Reset du formulaire et de l'image après succès
             this.pokemonForm.reset();
             this.previewImage = null;
+            this.loading=false
           },
           error: (error) => {
             //this.toastr.success('Pokémon créé avec succès !', 'Succès');

@@ -21,6 +21,7 @@ import { Router } from '@angular/router';
   styleUrl: './list-pokemons.component.css',
 })
 export class ListPokemonsComponent {
+  loading:boolean=false;
   selectedPokemon: any = null;
   pokemon1: Pokemon = new Pokemon(
     '1',
@@ -47,17 +48,19 @@ export class ListPokemonsComponent {
 
   public getData() {
     this.http
-      .get<Pokemon[]>('http://localhost:3004/pokemons')
+      .get<Pokemon[]>('https://back.smdvv.ma/public/api/pokemons')
       .subscribe((data) => {
         this.listPokemons.set(data);
         this.pokemons.set(data);
+        this.loading=false
       });
   }
 
   public deletePokemon(): void {
+    this.loading=true;
     const idPokemon = this.selectedPokemon.id;
     this.http
-      .delete(`http://localhost:3004/pokemons/${idPokemon}`, {
+      .delete(`https://back.smdvv.ma/public/api/pokemons/${idPokemon}`, {
         observe: 'response',
       })
       .subscribe(
@@ -73,6 +76,7 @@ export class ListPokemonsComponent {
             this.closeCardPopup();
             console.log('Pokemon supprimé avec succès');
             console.log(this.listPokemons);
+            this.loading=false
             // Tu peux ajouter ici d'autres actions (ex: refresh de la liste)
           }
         },
@@ -91,6 +95,7 @@ export class ListPokemonsComponent {
   }
 
   ngOnInit(): any {
+    this.loading=true
     this.getData();
   }
 
