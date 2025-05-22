@@ -88,23 +88,62 @@ app-playing-cards:hover {
   transform: scale(1.2);
 }
 
-/* Style pour la carte en grand */
-app-playing-cards[isLarge="true"] {
-  transform: scale(1.5);
+/* Conteneur des boutons (en bas de la popup) */
+.popup-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-@media (max-width: 768px) {
-  .popup-content {
-    transform: scale(0.8);
-  }
-
-  .close-btn {
-    top: -30px;
-    right: -30px;
-    font-size: 1.5rem;
-  }
-
-  app-playing-cards[isLarge="true"] {
-    transform: scale(1.2);
-  }
+/* Style de base pour les deux boutons */
+.popup-actions .delete,
+.popup-actions .edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
 }
+
+/* Icônes (à adapter selon ton set d’icônes) */
+.popup-actions .delete::before {
+  content: "🗑️";
+}
+.popup-actions .edit::before {
+  content: "✏️";
+}
+
+/* Style spécifique Delete */
+.popup-actions .delete {
+  background: #e74c3c;
+  color: #fff;
+}
+.popup-actions .delete:hover {
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Style spécifique Edit */
+.popup-actions .edit {
+  background: #3498db;
+  color: #fff;
+}
+.popup-actions .edit:hover {
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Version désactivée (par exemple pendant le chargement) */
+.popup-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+

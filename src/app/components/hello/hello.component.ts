@@ -13,6 +13,7 @@ import { PlayingCardsComponent } from '../playing-cards/playing-cards.component'
 export class HelloComponent {
 pokemons = signal<Pokemon[]>([
     new Pokemon(
+      "1",
       'Pikachu',
       35,
       'N°025 Pikachu',
@@ -23,6 +24,7 @@ pokemons = signal<Pokemon[]>([
       MonsterType.ELECTRIC
     ),
     new Pokemon(
+      "2",
       'Charmander',
       39,
       'N°004 Charmander',
@@ -33,6 +35,7 @@ pokemons = signal<Pokemon[]>([
       MonsterType.FIRE
     ),
     new Pokemon(
+      "3",
       'Bulbasaur',
       45,
       'N°001 Bulbasaur',
@@ -43,6 +46,7 @@ pokemons = signal<Pokemon[]>([
       MonsterType.PLANT
     ),
     new Pokemon(
+      "4",
       'Squirtle',
       44,
       'N°007 Squirtle',

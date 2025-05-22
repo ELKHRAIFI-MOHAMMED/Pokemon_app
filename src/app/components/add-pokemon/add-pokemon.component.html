@@ -70,5 +70,6 @@
     <img [src]="previewImage" width="120" />
   </div>
 
-  <button type="submit" >Ajouter Pokémon</button>
+  <button *ngIf="!editButton" type="submit" >Ajouter Pokemon</button>
+  <button *ngIf="editButton" type="button" (click)="upDatePokemon()" >Update Pokemon Pokémon</button>
 </form>

@@ -13,5 +13,11 @@
   <div class="popup-content" (click)="$event.stopPropagation()">
     <app-playing-cards [my-pokemon]="selectedPokemon" [isLarge]="true"></app-playing-cards>
     <button class="close-btn" (click)="closeCardPopup()">×</button>
+
+    <div class="popup-actions">
+      <button class="delete" (click)="deletePokemon()">Delete</button>
+      <button class="edit" (click)="editPokemons()">Edit</button>
+    </div>
   </div>
 </div>
+
