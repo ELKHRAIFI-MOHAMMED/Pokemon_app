@@ -185,3 +185,64 @@ app-playing-cards:hover {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 576px) {
+  .pokemons {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+  @media (max-width: 480px) {
+  .pokemons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 10px;
+  }
+}
+
+  #card-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+
+  app-playing-cards {
+    transform: scale(0.95);
+  }
+
+  .popup-content {
+    max-width: 95%;
+    max-height: 85%;
+  }
+
+  .close-btn {
+    top: -30px;
+    right: -30px;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  .popup-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .popup-actions .delete,
+  .popup-actions .edit {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .loading-spinner {
+    width: 45px;
+    height: 45px;
+    border-width: 5px;
+  }
+
+  .loading-spinner-box {
+    font-size: 0.95rem;
+  }
+}
